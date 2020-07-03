@@ -7,13 +7,13 @@ import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppComponent } from './app.component';
-import { PostsComponent } from './posts/post-list/post-list.component';
+import { PostListComponent } from './posts/post-list/post-list.component';
 import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostsComponent,
+    PostListComponent,
     HeaderComponent
   ],
   imports: [
