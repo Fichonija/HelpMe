@@ -21,13 +21,18 @@ export class PostService{
     this.http.get<{message: string, data: Post[]}>('http://localhost:3000/api/posts').subscribe(
       (res) => {
         this.posts = res.data;
-        this.postsUpdated.next(this.posts);
+        this.postsUpdated.next([...this.posts]);
       }
     );
   }
 
   addPost(post: Post): void{
-    this.posts.push(post);
-    this.postsUpdated.next([...this.posts]);
+    this.http.post<{message: string}>('http://localhost:3000/api/posts', post).subscribe(
+      (res) => {
+        console.log(res.message);
+        this.posts.push(post);
+        this.postsUpdated.next([...this.posts]);
+      }
+    );
   }
 }
