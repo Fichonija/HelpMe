@@ -1,7 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+const Post = require('./models/post');
 
 const app = express();
+
+
+mongoose.connect('mongodb+srv://fbolcic:C8aW72Pn8eyjFRjf@cluster0-eijik.mongodb.net/HelpMe?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => { console.log('Connected to MongoDB.') })
+  .catch((err) => { console.log('Connection to MongoDB failed. Error: ' + err) });
 
 app.use(bodyParser.json());
 
@@ -13,7 +21,12 @@ app.use((req, res, next) => {
 });
 
 app.post('/api/posts', (req, res, next) => {
-  const post = req.body;
+  const post = new Post({
+    title: req.body.title,
+    summary: req.body.summary
+  });
+  post.save();
+
   console.log(post);
   res.status(201).json({
     message: 'Post added successfuly.'
@@ -21,14 +34,11 @@ app.post('/api/posts', (req, res, next) => {
 })
 
 app.get('/api/posts', (req, res, next) => {
-  const posts = [
-    { id: 'esfmc23', title: 'First server blog title', summary: 'First blog post summary is awesome.' },
-    { id: 'wrefpokp34', title: 'Second server blog title', summary: 'Second blog post summary is awesome.' },
-    { id: 'qr0k3m3', title: 'Third server blog title', summary: 'Third blog post summary is awesome.' }
-  ];
-  res.status(200).json({
-    message: 'Posts fetched.',
-    data: posts
+  Post.find().then(documents => {
+      res.status(200).json({
+        message: 'Posts fetched.',
+        data: documents
+      });
   });
 });
 
