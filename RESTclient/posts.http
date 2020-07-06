@@ -1,11 +1,15 @@
 GET http://localhost:3000/api/posts HTTP/1.1
 
+GET http://localhost:3000/api/posts/5f03612356bd13433ca901b9 HTTP/1.1
+
 POST http://localhost:3000/api/posts HTTP/1.1
 content-type: application/json
 
 {
     "title": "New POst",
-    "summary": "new post summary"
+    "summary": "new post summary",
+    "slug": "new",
+    "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 }
 
 DELETE http://localhost:3000/api/posts/5f00bce4f6b32915ac17c773 HTTP/1.1

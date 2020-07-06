@@ -37,6 +37,8 @@ app.post("/api/posts", (req, res, next) => {
   const post = new Post({
     title: req.body.title,
     summary: req.body.summary,
+    slug: req.body.slug,
+    content: req.body.content,
   });
   post.save();
 
@@ -51,6 +53,15 @@ app.get("/api/posts", (req, res, next) => {
     res.status(200).json({
       message: "Posts fetched.",
       data: documents,
+    });
+  });
+});
+
+app.get("/api/posts/:id", (req, res, next) => {
+  Post.find({ _id: req.params.id }).then((document) => {
+    res.status(200).json({
+      message: "Post fetched.",
+      data: document,
     });
   });
 });
