@@ -6,6 +6,7 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatButtonModule } from "@angular/material/button";
 
 import { AppComponent } from "./app.component";
 import { PostListComponent } from "./posts/post-list/post-list.component";
@@ -22,6 +23,7 @@ import { AppRoutingModule } from "./app-routing.module";
     AppRoutingModule,
     MatCardModule,
     MatToolbarModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

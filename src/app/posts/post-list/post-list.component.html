@@ -1,6 +1,8 @@
 <mat-card *ngFor="let post of posts">
   <div (click)="onPostClicked()">
-    <h2>{{ post.title }}</h2>
+    <h2>
+      <a [routerLink]="['/posts', post.id]">{{ post.title }}</a>
+    </h2>
     <div>{{ post.summary }}</div>
   </div>
 </mat-card>
