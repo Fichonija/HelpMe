@@ -7,14 +7,21 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 import { AppComponent } from "./app.component";
 import { PostListComponent } from "./posts/post-list/post-list.component";
 import { HeaderComponent } from "./header/header.component";
 import { AppRoutingModule } from "./app-routing.module";
+import { PostDetailComponent } from "./posts/post-detail/post-detail.component";
 
 @NgModule({
-  declarations: [AppComponent, PostListComponent, HeaderComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    PostListComponent,
+    PostDetailComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -24,6 +31,7 @@ import { AppRoutingModule } from "./app-routing.module";
     MatCardModule,
     MatToolbarModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

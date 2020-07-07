@@ -1,5 +1,8 @@
-<h1>{{ post?.title }}</h1>
-<p>
-  <i>{{ post?.summary }}</i>
-</p>
-<p>{{ post?.content }}</p>
+<mat-spinner *ngIf="this.loading"></mat-spinner>
+<div *ngIf="!this.loading">
+  <h1>{{ post?.title }}</h1>
+  <p>
+    <i>{{ post?.summary }}</i>
+  </p>
+  <p>{{ post?.content }}</p>
+</div>
