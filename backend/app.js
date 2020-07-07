@@ -49,7 +49,7 @@ app.post("/api/posts", (req, res, next) => {
 });
 
 app.get("/api/posts", (req, res, next) => {
-  Post.find().then((documents) => {
+  Post.find(req.query).then((documents) => {
     res.status(200).json({
       message: "Posts fetched.",
       data: documents,
