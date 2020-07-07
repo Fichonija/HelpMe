@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, ParamMap } from "@angular/router";
+
 import { PostService } from "../post.service";
 import { Post } from "../post.model";
-import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-post-detail",
@@ -12,8 +13,8 @@ export class PostDetailComponent implements OnInit {
   slug: string;
 
   constructor(private route: ActivatedRoute, private postService: PostService) {
-    this.route.paramMap.subscribe((params) => {
-      this.slug = params.get("slug");
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      this.slug = paramMap.get("slug");
     });
   }
 
@@ -22,7 +23,7 @@ export class PostDetailComponent implements OnInit {
     if (this.post == null) {
       this.postService
         .getPostsByAttribute("slug", this.slug)
-        .subscribe((posts) => {
+        .subscribe((posts: Post[]) => {
           this.post = posts.pop();
         });
     }
