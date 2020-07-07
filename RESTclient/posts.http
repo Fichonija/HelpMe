@@ -1,5 +1,7 @@
 GET http://localhost:3000/api/posts HTTP/1.1
 
+GET http://localhost:3000/api/posts?slug=send HTTP/1.1
+
 GET http://localhost:3000/api/posts/5f03612356bd13433ca901b9 HTTP/1.1
 
 POST http://localhost:3000/api/posts HTTP/1.1
@@ -12,4 +14,4 @@ content-type: application/json
     "content": "Rig Veda Apollonius of Perga decipherment finite but unbounded brain is the seed of intelligence radio telescope? Extraplanetary venture colonies Sea of Tranquility made in the interiors of collapsing stars not a sunrise but a galaxyrise. Vastness is bearable only through love emerged into consciousness the carbon in our apple pies cosmic ocean gathered by gravity network of wormholes? Cosmic ocean with pretty stories for which there's little good evidence from which we spring vastness is bearable only through love the only home we've ever known invent the universe."
 }
 
-DELETE http://localhost:3000/api/posts/5f03555ab4181046889b524f HTTP/1.1
+DELETE http://localhost:3000/api/posts/5f03660ab436af327c3f0c2a HTTP/1.1

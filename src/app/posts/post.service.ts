@@ -47,6 +47,24 @@ export class PostService {
       );
   }
 
+  getPostsByAttribute(key: string, value: string): Observable<Post[]> {
+    return this.http
+      .get<{ message: string; data: any }>(
+        this.postEndpoint + "?" + key + "=" + value
+      )
+      .pipe(
+        map((res) => {
+          return res.data.map((posts) => {
+            if (Array.isArray(posts)) {
+              return posts.map((post) => this.normalizePost(post));
+            } else {
+              return this.normalizePost(posts);
+            }
+          });
+        })
+      );
+  }
+
   addPost(post: Post): void {
     this.http
       .post<{ message: string }>(this.postEndpoint, post)
