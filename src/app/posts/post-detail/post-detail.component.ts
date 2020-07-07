@@ -16,6 +16,7 @@ export class PostDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.postService.getPosts();
+    this.post = this.postService.getSelectedPost();
+    console.log(this.post);
   }
 }

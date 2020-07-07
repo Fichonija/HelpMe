@@ -2,7 +2,9 @@
   <span>HelpMe</span>
   <ul>
     <li>
-      <a mat-button routerLink="/posts" routerLinkActive="mat-accent">Posts</a>
+      <a mat-button routerLink="/posts" [routerLinkActive]="'mat-accent'"
+        >Posts</a
+      >
     </li>
   </ul>
 </mat-toolbar>

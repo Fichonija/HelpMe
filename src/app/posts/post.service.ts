@@ -10,6 +10,7 @@ export class PostService {
   private postEndpoint: string = "http://localhost:3000/api/posts";
 
   private posts: Post[] = [];
+  private selectedPost: Post = null;
   private postsUpdated: Subject<Post[]> = new Subject<Post[]>();
 
   constructor(private http: HttpClient) {}
@@ -54,6 +55,14 @@ export class PostService {
         this.posts.push(post);
         this.postsUpdated.next([...this.posts]);
       });
+  }
+
+  setSelectedPost(post: Post): void {
+    this.selectedPost = post;
+  }
+
+  getSelectedPost(): Post {
+    return this.selectedPost;
   }
 
   normalizePost(apiPost: any): Post {
