@@ -20,7 +20,7 @@ router.post("", checkAuth, (req, res, next) => {
   });
 });
 
-router.get("", checkAuth, (req, res, next) => {
+router.get("", (req, res, next) => {
   Post.find(req.query).then((documents) => {
     res.status(200).json({
       message: "Posts fetched.",
