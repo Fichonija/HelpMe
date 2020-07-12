@@ -1,11 +1,13 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { AuthData } from "./auth.model";
+import { Subject } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
   private authEndpoint: string = "http://localhost:3000/api/auth";
   private token: string;
+  private authStatusListener: Subject<boolean> = new Subject<boolean>();
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +21,12 @@ export class AuthService {
       )
       .subscribe((res) => {
         this.token = res.data;
+        this.authStatusListener.next(true);
       });
+  }
+
+  getAuthStatusListener() {
+    return this.authStatusListener.asObservable();
   }
 
   getToken(): string {
