@@ -1,0 +1,7 @@
+POST http://localhost:3000/api/auth/signup HTTP/1.1
+content-type: application/json
+
+{
+    "email": "fbolcic@tvz.hr",
+    "password": "X3ewp3QU"
+}
