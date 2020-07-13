@@ -6,7 +6,9 @@ import { Subject } from "rxjs";
 @Injectable({ providedIn: "root" })
 export class AuthService {
   private authEndpoint: string = "http://localhost:3000/api/auth";
+
   private token: string;
+  private isAuthenticated: boolean = false;
   private authStatusListener: Subject<boolean> = new Subject<boolean>();
 
   constructor(private http: HttpClient) {}
@@ -21,8 +23,17 @@ export class AuthService {
       )
       .subscribe((res) => {
         this.token = res.data;
-        this.authStatusListener.next(true);
+        if (this.token) {
+          this.isAuthenticated = true;
+          this.authStatusListener.next(true);
+        }
       });
+  }
+
+  logout() {
+    this.isAuthenticated = false;
+    this.token = null;
+    this.authStatusListener.next(false);
   }
 
   getAuthStatusListener() {
