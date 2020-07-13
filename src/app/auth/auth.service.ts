@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { AuthData } from "./auth.model";
 import { Subject } from "rxjs";
+import { Router } from "@angular/router";
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
@@ -11,7 +12,7 @@ export class AuthService {
   private isAuthenticated: boolean = false;
   private authStatusListener: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(email: string, password: string) {
     const authData: AuthData = { email: email, password: password };
@@ -26,6 +27,7 @@ export class AuthService {
         if (this.token) {
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
+          this.router.navigate(["/"]);
         }
       });
   }
@@ -34,10 +36,15 @@ export class AuthService {
     this.isAuthenticated = false;
     this.token = null;
     this.authStatusListener.next(false);
+    this.router.navigate(["/"]);
   }
 
   getAuthStatusListener() {
     return this.authStatusListener.asObservable();
+  }
+
+  getIsAuthenticated() {
+    return this.isAuthenticated;
   }
 
   getToken(): string {
