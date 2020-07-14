@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 
 import { PostService } from "../post.service";
@@ -8,6 +8,7 @@ import { Post } from "../post.model";
   selector: "app-post-detail",
   templateUrl: "./post-detail.component.html",
   styleUrls: ["./post-detail.component.css"],
+  encapsulation: ViewEncapsulation.None,
 })
 export class PostDetailComponent implements OnInit {
   loading: boolean = false;

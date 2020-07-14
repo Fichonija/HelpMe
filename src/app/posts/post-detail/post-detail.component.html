@@ -1,8 +1,10 @@
 <mat-spinner *ngIf="this.loading"></mat-spinner>
-<div *ngIf="!this.loading">
-  <h1>{{ post?.title }}</h1>
-  <p>
+<div class="post" *ngIf="!this.loading">
+  <div class="post-title">
+    <h1>{{ post?.title }}</h1>
+  </div>
+  <div class="post-summary">
     <i>{{ post?.summary }}</i>
-  </p>
-  <div [innerHTML]="post?.content"></div>
+  </div>
+  <div class="post-content" [innerHTML]="post?.content"></div>
 </div>

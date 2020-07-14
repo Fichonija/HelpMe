@@ -1,3 +1,52 @@
+.post {
+  width: 80%;
+  margin: 0 auto;
+}
+
 mat-spinner {
   margin: 0 auto;
 }
+
+h1,
+h2,
+h3,
+h4 {
+  color: #1561ad;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.post-summary {
+  margin-bottom: 2.2rem;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.post-content {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.post-content {
+  color: #2c2d30;
+}
+
+.post-content a {
+  color: #0f87ac;
+}
+
+.post-content a:hover {
+  color: #fc5226;
+}
+
+/*
+Color Palette:
+Left Blue: #1561ad
+
+Right Blue- Muted: #1c77ac
+
+Blue-Green: #1dbab4
+
+Red-Orange: #fc5226
+*/
