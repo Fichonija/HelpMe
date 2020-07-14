@@ -10,6 +10,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatDialogModule } from "@angular/material/dialog";
 
 import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
 
@@ -21,6 +22,7 @@ import { PostDetailComponent } from "./posts/post-detail/post-detail.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { AuthInterceptor } from "./auth/auth.interceptor";
 import { PostCreateComponent } from "./posts/post-create/post-create.component";
+import { PostCreateDialogComponent } from "./posts/post-create/post-create-dialog/post-create-dialog.component";
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { PostCreateComponent } from "./posts/post-create/post-create.component";
     PostListComponent,
     PostDetailComponent,
     PostCreateComponent,
+    PostCreateDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,11 +47,13 @@ import { PostCreateComponent } from "./posts/post-create/post-create.component";
     MatToolbarModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    MatDialogModule,
     CKEditorModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
+  entryComponents: [PostCreateDialogComponent],
 })
 export class AppModule {}

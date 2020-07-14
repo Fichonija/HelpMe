@@ -5,7 +5,7 @@
         matInput
         required
         formControlName="postTitle"
-        placeholder="Post Title"
+        placeholder="Post title"
       />
     </mat-form-field>
     <mat-form-field>
@@ -14,7 +14,7 @@
         required
         formControlName="postSummary"
         rows="4"
-        placeholder="Post Summary"
+        placeholder="Post summary"
       ></textarea>
     </mat-form-field>
     <mat-form-field>
@@ -22,12 +22,11 @@
         matInput
         required
         formControlName="postSlug"
-        placeholder="Post Slug"
+        placeholder="Post url identifier"
       />
-      <mat-hint
-        >Write 'awesome-blog-post' to get
-        https://helpme/posts/awesome-blog-post</mat-hint
-      >
+      <mat-hint>{{
+        "https://helpme/posts/" + this.postForm.value.postSlug
+      }}</mat-hint>
     </mat-form-field>
   </form>
 
@@ -41,6 +40,7 @@
     mat-raised-button
     type="submit"
     color="primary"
+    [disabled]="this.postForm.invalid || this.editorContent.length == 0"
     (click)="onSavePost()"
   >
     Save Post

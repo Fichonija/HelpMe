@@ -8,6 +8,15 @@
     </li>
     <li>
       <a
+        *ngIf="this.userAuthenticated"
+        mat-button
+        routerLink="/posts/create"
+        [routerLinkActive]="'mat-accent'"
+        >New Post</a
+      >
+    </li>
+    <li>
+      <a
         *ngIf="!this.userAuthenticated"
         mat-button
         routerLink="/login"

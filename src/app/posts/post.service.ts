@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Subject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
+import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 import { Post } from "./post.model";
-import { HttpClient } from "@angular/common/http";
 
 @Injectable({ providedIn: "root" })
 export class PostService {
@@ -13,7 +14,7 @@ export class PostService {
   private selectedPost: Post = null;
   private postsUpdated: Subject<Post[]> = new Subject<Post[]>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   getPostsUpdatedListener(): Observable<Post[]> {
     return this.postsUpdated.asObservable();
@@ -70,9 +71,12 @@ export class PostService {
       .post<{ message: string; data: string }>(this.postEndpoint, post)
       .subscribe((res) => {
         console.log(res.message);
+
         post.id = res.data;
         this.posts.push(post);
         this.postsUpdated.next([...this.posts]);
+
+        this.router.navigate(["/"]);
       });
   }
 

@@ -32,10 +32,6 @@ export class PostListComponent implements OnInit, OnDestroy {
     this.postsSubscription.unsubscribe();
   }
 
-  onPostClicked() {
-    alert("Post Clicked!");
-  }
-
   onPostSelected(post: Post) {
     this.postService.setSelectedPost(post);
   }

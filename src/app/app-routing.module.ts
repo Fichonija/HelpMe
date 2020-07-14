@@ -10,8 +10,12 @@ import { PostCreateComponent } from "./posts/post-create/post-create.component";
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "posts", component: PostListComponent },
+  {
+    path: "posts/create",
+    component: PostCreateComponent,
+    canActivate: [AuthGuard],
+  },
   { path: "posts/:slug", component: PostDetailComponent },
-  { path: "posts-new", component: PostCreateComponent },
   { path: "", component: PostListComponent },
 ];
 
