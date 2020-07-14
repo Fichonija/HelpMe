@@ -4,5 +4,5 @@
   <p>
     <i>{{ post?.summary }}</i>
   </p>
-  <p>{{ post?.content }}</p>
+  <div [innerHTML]="post?.content"></div>
 </div>

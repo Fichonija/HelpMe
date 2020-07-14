@@ -1,1 +1,48 @@
-<ckeditor [editor]="editor" data="<p>Hello, world!</p>"></ckeditor>
+<mat-card>
+  <form [formGroup]="postForm">
+    <mat-form-field>
+      <input
+        matInput
+        required
+        formControlName="postTitle"
+        placeholder="Post Title"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        required
+        formControlName="postSummary"
+        rows="4"
+        placeholder="Post Summary"
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        required
+        formControlName="postSlug"
+        placeholder="Post Slug"
+      />
+      <mat-hint
+        >Write 'awesome-blog-post' to get
+        https://helpme/posts/awesome-blog-post</mat-hint
+      >
+    </mat-form-field>
+  </form>
+
+  <ckeditor
+    [editor]="editor"
+    [(ngModel)]="editorContent"
+    [config]="editorConfig"
+  ></ckeditor>
+
+  <button
+    mat-raised-button
+    type="submit"
+    color="primary"
+    (click)="onSavePost()"
+  >
+    Save Post
+  </button>
+</mat-card>

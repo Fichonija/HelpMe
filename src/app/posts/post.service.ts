@@ -67,9 +67,10 @@ export class PostService {
 
   addPost(post: Post): void {
     this.http
-      .post<{ message: string }>(this.postEndpoint, post)
+      .post<{ message: string; data: string }>(this.postEndpoint, post)
       .subscribe((res) => {
         console.log(res.message);
+        post.id = res.data;
         this.posts.push(post);
         this.postsUpdated.next([...this.posts]);
       });

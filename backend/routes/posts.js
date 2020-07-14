@@ -17,6 +17,7 @@ router.post("", checkAuth, (req, res, next) => {
   console.log(post);
   res.status(201).json({
     message: "Post added successfuly.",
+    data: post.id,
   });
 });
 
