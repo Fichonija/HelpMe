@@ -34,10 +34,12 @@ h4 {
 
 .post-content a {
   color: #0f87ac;
+  text-decoration: none;
 }
 
 .post-content a:hover {
   color: #fc5226;
+  text-decoration: none;
 }
 
 /*
