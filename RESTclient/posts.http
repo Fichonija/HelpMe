@@ -6,6 +6,7 @@ GET http://localhost:3000/api/posts/5f03612356bd13433ca901b9 HTTP/1.1
 
 POST http://localhost:3000/api/posts HTTP/1.1
 content-type: application/json
+authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZib2xjaWNAdHZ6LmhyIiwidXNlcklkIjoiNWYwYWRkZjI1NzVjNTk0NTg0NTNlNTRiIiwiaWF0IjoxNTk1MDA2MTYzLCJleHAiOjE1OTUwMDk3NjN9.XCJk0-q06rEi5p0W9MBhoU2BRFzsjO49nWE2bIXwUo0
 
 {
     "title": "Second slug Post",
@@ -14,4 +15,5 @@ content-type: application/json
     "content": "Rig Veda Apollonius of Perga decipherment finite but unbounded brain is the seed of intelligence radio telescope? Extraplanetary venture colonies Sea of Tranquility made in the interiors of collapsing stars not a sunrise but a galaxyrise. Vastness is bearable only through love emerged into consciousness the carbon in our apple pies cosmic ocean gathered by gravity network of wormholes? Cosmic ocean with pretty stories for which there's little good evidence from which we spring vastness is bearable only through love the only home we've ever known invent the universe."
 }
 
-DELETE http://localhost:3000/api/posts/5f03660ab436af327c3f0c2a HTTP/1.1
+DELETE http://localhost:3000/api/posts/5f11dd430e6eaf27fcedaf18 HTTP/1.1
+authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZib2xjaWNAdHZ6LmhyIiwidXNlcklkIjoiNWYwYWRkZjI1NzVjNTk0NTg0NTNlNTRiIiwiaWF0IjoxNTk1MDA2MTYzLCJleHAiOjE1OTUwMDk3NjN9.XCJk0-q06rEi5p0W9MBhoU2BRFzsjO49nWE2bIXwUo0
