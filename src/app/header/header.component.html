@@ -15,6 +15,13 @@
         >New Post</a
       >
     </li>
+    <li class="nav-separator"></li>
+    <li>
+      <a mat-button routerLink="/workshops" [routerLinkActive]="'mat-accent'"
+        >Workshops</a
+      >
+    </li>
+    <li class="nav-separator"></li>
     <li>
       <a
         *ngIf="!this.userAuthenticated"

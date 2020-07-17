@@ -1,0 +1,15 @@
+<mat-spinner *ngIf="this.loading"></mat-spinner>
+<div *ngIf="!this.loading">
+  <mat-card *ngFor="let workshop of workshops">
+    <div>
+      <h2>
+        <a
+          [routerLink]="['/posts', workshop.slug]"
+          (click)="onWorkshopSelected(workshop)"
+          >{{ workshop.title }}
+        </a>
+      </h2>
+      <div>{{ workshop.summary }}</div>
+    </div>
+  </mat-card>
+</div>

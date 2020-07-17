@@ -23,6 +23,7 @@ import { LoginComponent } from "./auth/login/login.component";
 import { AuthInterceptor } from "./auth/auth.interceptor";
 import { PostCreateComponent } from "./posts/post-create/post-create.component";
 import { PostCreateDialogComponent } from "./posts/post-create/post-create-dialog/post-create-dialog.component";
+import { WorkshopListComponent } from "./workshops/workshop-list/workshop-list.component";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { PostCreateDialogComponent } from "./posts/post-create/post-create-dialo
     PostDetailComponent,
     PostCreateComponent,
     PostCreateDialogComponent,
+    WorkshopListComponent,
   ],
   imports: [
     BrowserModule,
