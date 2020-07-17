@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Workshop } from "../workshop.model";
+import { WorkshopService } from "../workshop.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-workshop-list",
@@ -7,40 +9,23 @@ import { Workshop } from "../workshop.model";
   styleUrls: ["./workshop-list.component.css"],
 })
 export class WorkshopListComponent implements OnInit {
-  loading: boolean = true;
+  loading: boolean = false;
 
-  workshops: Workshop[] = [
-    {
-      id: "1",
-      title: "Workshop 1",
-      summary:
-        "Biodiesel banjo 8-bit, YOLO gentrify VHS tilde typewriter swag. Hot chicken chicharrones synth normcore pickled locavore. Blue bottle jean shorts truffaut flexitarian XOXO asymmetrical meh squid artisan adaptogen. Sustainable humblebrag direct trade cornhole raw denim trust fund edison bulb banjo ennui etsy XOXO.",
-      address: "Kačićeva 13a, Zagreb",
-      dateTime: new Date(),
-      slug: "first",
-    },
-    {
-      id: "2",
-      title: "Workshop 2",
-      summary:
-        "Biodiesel banjo 8-bit, YOLO gentrify VHS tilde typewriter swag. Hot chicken chicharrones synth normcore pickled locavore. Blue bottle jean shorts truffaut flexitarian XOXO asymmetrical meh squid artisan adaptogen. Sustainable humblebrag direct trade cornhole raw denim trust fund edison bulb banjo ennui etsy XOXO.",
-      address: "Kačićeva 13a, Zagreb",
-      dateTime: new Date(),
-      slug: "second",
-    },
-    {
-      id: "3",
-      title: "Workshop 3",
-      summary:
-        "Biodiesel banjo 8-bit, YOLO gentrify VHS tilde typewriter swag. Hot chicken chicharrones synth normcore pickled locavore. Blue bottle jean shorts truffaut flexitarian XOXO asymmetrical meh squid artisan adaptogen. Sustainable humblebrag direct trade cornhole raw denim trust fund edison bulb banjo ennui etsy XOXO.",
-      address: "Kačićeva 13a, Zagreb",
-      dateTime: new Date(),
-      slug: "third",
-    },
-  ];
+  workshops: Workshop[];
+  workshopSubscription: Subscription;
+
+  constructor(private workshopService: WorkshopService) {}
 
   ngOnInit() {
-    this.loading = false;
+    this.loading = true;
+
+    this.workshopService.getWorkshops();
+    this.workshopSubscription = this.workshopService
+      .getWorkshopsUpdatedListener()
+      .subscribe((workshops: Workshop[]) => {
+        this.workshops = workshops;
+        this.loading = false;
+      });
   }
 
   onWorkshopSelected(workshop: Workshop) {}
