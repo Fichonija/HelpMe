@@ -43,5 +43,5 @@ export class WorkshopListComponent implements OnInit {
     this.loading = false;
   }
 
-  onWorkshopSelected() {}
+  onWorkshopSelected(workshop: Workshop) {}
 }

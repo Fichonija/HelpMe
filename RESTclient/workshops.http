@@ -1,0 +1,18 @@
+GET http://localhost:3000/api/workshops HTTP/1.1
+
+GET http://localhost:3000/api/workshops?slug=one HTTP/1.1
+
+GET http://localhost:3000/api/workshops/5f11d5dce023403f706e1583 HTTP/1.1
+
+POST http://localhost:3000/api/workshops HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Workshop 1",
+    "summary": "Summary 1",
+    "address": "Kaciceva 3, 10000 Zagreb",
+    "dateTime": "2020-07-17T16:43:04.367Z",
+    "slug": "one"
+}
+
+DELETE http://localhost:3000/api/workshops/5f11d5dce023403f706e1583 HTTP/1.1
