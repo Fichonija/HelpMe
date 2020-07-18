@@ -15,6 +15,8 @@ export class WorkshopDetailComponent implements OnInit {
   constructor(private workshopService: WorkshopService) {}
 
   ngOnInit() {
+    this.loading = true;
     this.workshop = this.workshopService.getSelectedWorkshop();
+    this.loading = false;
   }
 }
