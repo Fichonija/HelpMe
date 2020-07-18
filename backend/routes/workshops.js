@@ -11,6 +11,8 @@ router.post("", checkAuth, (req, res, next) => {
     summary: req.body.summary,
     address: req.body.address,
     dateTime: new Date(req.body.dateTime),
+    availablePlaces: req.body.availablePlaces,
+    takenPlaces: req.body.takenPlaces,
     slug: req.body.slug,
   });
   workshop.save();

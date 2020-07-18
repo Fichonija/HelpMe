@@ -4,5 +4,7 @@ export interface Workshop {
   summary: string;
   address: string;
   dateTime: Date;
+  availablePlaces: number;
+  takenPlaces: number;
   slug: string;
 }

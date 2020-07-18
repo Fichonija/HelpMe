@@ -70,6 +70,8 @@ export class WorkshopService {
       summary: apiWorkshop.summary,
       address: apiWorkshop.address,
       dateTime: new Date(apiWorkshop.dateTime),
+      availablePlaces: apiWorkshop.availablePlaces,
+      takenPlaces: apiWorkshop.takenPlaces,
       slug: apiWorkshop.slug,
     };
   }

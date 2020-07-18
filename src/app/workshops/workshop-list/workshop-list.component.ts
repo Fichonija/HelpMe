@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Workshop } from "../workshop.model";
 import { WorkshopService } from "../workshop.service";
 import { Subscription } from "rxjs";
@@ -8,7 +8,7 @@ import { Subscription } from "rxjs";
   templateUrl: "./workshop-list.component.html",
   styleUrls: ["./workshop-list.component.css"],
 })
-export class WorkshopListComponent implements OnInit {
+export class WorkshopListComponent implements OnInit, OnDestroy {
   loading: boolean = false;
 
   workshops: Workshop[];
@@ -26,6 +26,10 @@ export class WorkshopListComponent implements OnInit {
         this.workshops = workshops;
         this.loading = false;
       });
+  }
+
+  ngOnDestroy() {
+    this.workshopSubscription.unsubscribe();
   }
 
   onWorkshopSelected(workshop: Workshop) {

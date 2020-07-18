@@ -5,6 +5,8 @@ const workshopSchema = new mongoose.Schema({
   summary: { type: String, required: true },
   address: { type: String, required: true },
   dateTime: { type: Date, required: true },
+  availablePlaces: { type: Number, required: true },
+  takenPlaces: { type: Number, required: true },
   slug: { type: String, required: true },
 });
 
