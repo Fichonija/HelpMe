@@ -12,7 +12,6 @@ router.post("", checkAuth, (req, res, next) => {
     address: req.body.address,
     dateTime: new Date(req.body.dateTime),
     availablePlaces: req.body.availablePlaces,
-    takenPlaces: req.body.takenPlaces,
     slug: req.body.slug,
   });
   workshop.save();
@@ -25,12 +24,14 @@ router.post("", checkAuth, (req, res, next) => {
 });
 
 router.get("", (req, res, next) => {
-  Workshop.find(req.query).then((documents) => {
-    res.status(200).json({
-      message: "Workshops fetched.",
-      data: documents,
+  Workshop.find(req.query)
+    .populate("participants")
+    .then((documents) => {
+      res.status(200).json({
+        message: "Workshops fetched.",
+        data: documents,
+      });
     });
-  });
 });
 
 router.get("/:id", (req, res, next) => {

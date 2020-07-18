@@ -6,7 +6,9 @@ const workshopSchema = new mongoose.Schema({
   address: { type: String, required: true },
   dateTime: { type: Date, required: true },
   availablePlaces: { type: Number, required: true },
-  takenPlaces: { type: Number, required: true },
+  participants: [
+    { type: mongoose.Schema.Types.ObjectId, ref: "WorkshopParticipant" },
+  ],
   slug: { type: String, required: true },
 });
 

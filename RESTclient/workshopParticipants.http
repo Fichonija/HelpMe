@@ -1,0 +1,13 @@
+GET http://localhost:3000/api/workshopParticipants HTTP/1.1
+
+POST http://localhost:3000/api/workshopParticipants HTTP/1.1
+content-type: application/json
+# authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZib2xjaWNAdHZ6LmhyIiwidXNlcklkIjoiNWYwYWRkZjI1NzVjNTk0NTg0NTNlNTRiIiwiaWF0IjoxNTk1MDg3OTcxLCJleHAiOjE1OTUwOTE1NzF9.pSZ8nEVOSG40ucZRhFRmTuO8UU1W_w02QTuz0isRaXM
+
+{
+  "fullname": "Ivan Horvat",
+  "email": "ihorvat@tvz.hr",
+  "workshop": "5f132e8e0578340ed41f228d"
+}
+
+DELETE http://localhost:3000/api/workshopParticipants/5f132e9d0578340ed41f228e HTTP/1.1

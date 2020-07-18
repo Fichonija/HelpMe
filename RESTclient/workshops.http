@@ -6,7 +6,7 @@ GET http://localhost:3000/api/workshops/5f11d5dce023403f706e1583 HTTP/1.1
 
 POST http://localhost:3000/api/workshops HTTP/1.1
 content-type: application/json
-authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZib2xjaWNAdHZ6LmhyIiwidXNlcklkIjoiNWYwYWRkZjI1NzVjNTk0NTg0NTNlNTRiIiwiaWF0IjoxNTk1MDgxNDE4LCJleHAiOjE1OTUwODUwMTh9.qZtgxLFXwINwBDebK2qUxcUf8LHbbOTKjQEcqBbruBI
+authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZib2xjaWNAdHZ6LmhyIiwidXNlcklkIjoiNWYwYWRkZjI1NzVjNTk0NTg0NTNlNTRiIiwiaWF0IjoxNTk1MDkyMjc1LCJleHAiOjE1OTUwOTU4NzV9.d7nD2iYKV8H2HiCQ9O3ZeCqaPu8sI0LIyHOGrjEIvCQ
 
 {
     "title": "Who's still afraid of fear? A workshop about anxiety.",
@@ -14,9 +14,8 @@ authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZib2xj
     "address": "Savjetovalište TVZ, Vrbik 8, 10000 Zagreb",
     "dateTime": "2020-07-17T16:43:04.367Z",
     "availablePlaces": 20,
-    "takenPlaces": 0,
     "slug": "who-is-still-afraid-of-fear"
 }
 
-DELETE http://localhost:3000/api/workshops/5f11dd7d0e6eaf27fcedaf19 HTTP/1.1
-authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZib2xjaWNAdHZ6LmhyIiwidXNlcklkIjoiNWYwYWRkZjI1NzVjNTk0NTg0NTNlNTRiIiwiaWF0IjoxNTk1MDgxNDE4LCJleHAiOjE1OTUwODUwMTh9.qZtgxLFXwINwBDebK2qUxcUf8LHbbOTKjQEcqBbruBI
+DELETE http://localhost:3000/api/workshops/5f132e0c40bdc917685eec36 HTTP/1.1
+authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZib2xjaWNAdHZ6LmhyIiwidXNlcklkIjoiNWYwYWRkZjI1NzVjNTk0NTg0NTNlNTRiIiwiaWF0IjoxNTk1MDkyMjc1LCJleHAiOjE1OTUwOTU4NzV9.d7nD2iYKV8H2HiCQ9O3ZeCqaPu8sI0LIyHOGrjEIvCQ
