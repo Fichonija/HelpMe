@@ -3,7 +3,16 @@
   <div class="workshop-title">
     <h1>{{ workshop?.title }}</h1>
   </div>
-  <div class="post-summary">
-    <i>{{ workshop?.summary }}</i>
+  <div class="workshop-summary">
+    {{ workshop?.summary }}
+  </div>
+  <div class="workshop-event-info">
+    <p>
+      <i
+        >The workshop will be held at {{ workshop?.address }}, on
+        {{ workshop?.dateTime.toLocaleDateString() }}
+        {{ workshop?.dateTime.toLocaleTimeString() }}.</i
+      >
+    </p>
   </div>
 </div>

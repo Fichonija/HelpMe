@@ -35,6 +35,26 @@ export class WorkshopService {
       });
   }
 
+  getWorkshopsByAttribute(key: string, value: string): Observable<Workshop[]> {
+    return this.http
+      .get<{ message: string; data: any }>(
+        this.workshopsEndpoint + "?" + key + "=" + value
+      )
+      .pipe(
+        map((res) => {
+          return res.data.map((workshops) => {
+            if (Array.isArray(workshops)) {
+              return workshops.map((workshop) =>
+                this.normalizeWorkshop(workshop)
+              );
+            } else {
+              return this.normalizeWorkshop(workshops);
+            }
+          });
+        })
+      );
+  }
+
   setSelectedWorkshop(workshop: Workshop) {
     this.selectedWorkshop = workshop;
   }
