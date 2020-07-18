@@ -27,8 +27,8 @@ h4 {
   justify-content: space-between;
 }
 
-.workshop-places {
-  padding: 16px 0;
+.workshop-footer > * {
+  margin: auto 0;
 }
 
 /*
