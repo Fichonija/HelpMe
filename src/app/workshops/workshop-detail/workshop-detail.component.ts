@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Workshop } from "../workshop.model";
 import { WorkshopService } from "../workshop.service";
 import { ActivatedRoute, ParamMap } from "@angular/router";
+import { MatDialog } from "@angular/material/dialog";
+import { WorkshopApplyDialogComponent } from "./workshop-apply-dialog/workshop-apply-dialog.component";
 
 @Component({
   selector: "app-workshop-detail",
@@ -16,6 +18,7 @@ export class WorkshopDetailComponent implements OnInit {
 
   constructor(
     private workshopService: WorkshopService,
+    public workshopApplyDialog: MatDialog,
     private route: ActivatedRoute
   ) {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -36,5 +39,19 @@ export class WorkshopDetailComponent implements OnInit {
     } else {
       this.loading = false;
     }
+  }
+
+  onApplyToWorkshop(): void {
+    const dialogRef = this.workshopApplyDialog.open(
+      WorkshopApplyDialogComponent,
+      {
+        data: { workshopTitle: this.workshop.title },
+      }
+    );
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log(result);
+      }
+    });
   }
 }

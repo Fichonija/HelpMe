@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>Apply to workshop?</h2>
+<div mat-dialog-content>
+  <p>
+    This action will apply you to the workshop
+    <i>{{ this.data.workshopTitle }}</i
+    >. To continue please provide full name and e-mail address.
+  </p>
+  <mat-form-field>
+    <mat-label>Full name</mat-label>
+    <input
+      matInput
+      [(ngModel)]="data.fullname"
+      placeholder="e.g. Ivan Horvat"
+      #fullname="ngModel"
+      required
+    />
+    <mat-error>Please provide full name.</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>E-mail address</mat-label>
+    <input
+      matInput
+      [(ngModel)]="data.email"
+      #email="ngModel"
+      placeholder="e.g. ihorvat@tvz.hr"
+      required
+      email
+    />
+    <mat-error>Please provide a valid e-mail address.</mat-error>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    color="accent"
+    [disabled]="fullname.invalid || email.invalid"
+    (click)="onApplyClicked()"
+  >
+    Apply
+  </button>
+</div>

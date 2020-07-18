@@ -15,11 +15,21 @@
       >
     </p>
   </div>
-  <div class="workshop-places">
-    <i
-      >Seats taken: {{ workshop?.takenPlaces }}/{{
-        workshop?.availablePlaces
-      }}</i
+  <div class="workshop-footer">
+    <div class="workshop-places">
+      <i
+        >Seats taken: {{ workshop?.takenPlaces }}/{{
+          workshop?.availablePlaces
+        }}</i
+      >
+    </div>
+    <button
+      mat-raised-button
+      class="workshop-apply"
+      color="accent"
+      (click)="onApplyToWorkshop()"
     >
+      Apply to workshop
+    </button>
   </div>
 </div>

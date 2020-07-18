@@ -22,6 +22,15 @@ h4 {
   opacity: 0.9;
 }
 
+.workshop-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.workshop-places {
+  padding: 16px 0;
+}
+
 /*
 Color Palette:
 Left Blue: #1561ad

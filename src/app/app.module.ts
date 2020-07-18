@@ -25,6 +25,7 @@ import { PostCreateComponent } from "./posts/post-create/post-create.component";
 import { PostCreateDialogComponent } from "./posts/post-create/post-create-dialog/post-create-dialog.component";
 import { WorkshopListComponent } from "./workshops/workshop-list/workshop-list.component";
 import { WorkshopDetailComponent } from "./workshops/workshop-detail/workshop-detail.component";
+import { WorkshopApplyDialogComponent } from "./workshops/workshop-detail/workshop-apply-dialog/workshop-apply-dialog.component";
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { WorkshopDetailComponent } from "./workshops/workshop-detail/workshop-de
     PostCreateDialogComponent,
     WorkshopListComponent,
     WorkshopDetailComponent,
+    WorkshopApplyDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +60,6 @@ import { WorkshopDetailComponent } from "./workshops/workshop-detail/workshop-de
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [PostCreateDialogComponent],
+  entryComponents: [PostCreateDialogComponent, WorkshopApplyDialogComponent],
 })
 export class AppModule {}
