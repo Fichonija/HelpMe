@@ -28,5 +28,7 @@ export class WorkshopListComponent implements OnInit {
       });
   }
 
-  onWorkshopSelected(workshop: Workshop) {}
+  onWorkshopSelected(workshop: Workshop) {
+    this.workshopService.setSelectedWorkshop(workshop);
+  }
 }

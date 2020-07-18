@@ -24,6 +24,7 @@ import { AuthInterceptor } from "./auth/auth.interceptor";
 import { PostCreateComponent } from "./posts/post-create/post-create.component";
 import { PostCreateDialogComponent } from "./posts/post-create/post-create-dialog/post-create-dialog.component";
 import { WorkshopListComponent } from "./workshops/workshop-list/workshop-list.component";
+import { WorkshopDetailComponent } from "./workshops/workshop-detail/workshop-detail.component";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { WorkshopListComponent } from "./workshops/workshop-list/workshop-list.c
     PostCreateComponent,
     PostCreateDialogComponent,
     WorkshopListComponent,
+    WorkshopDetailComponent,
   ],
   imports: [
     BrowserModule,

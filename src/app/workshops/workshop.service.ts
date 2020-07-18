@@ -9,6 +9,7 @@ export class WorkshopService {
   private workshopsEndpoint = "http://localhost:3000/api/workshops";
 
   private workshops: Workshop[] = [];
+  private selectedWorkshop: Workshop;
   private workshopsUpdated: Subject<Workshop[]> = new Subject<Workshop[]>();
 
   constructor(private http: HttpClient) {}
@@ -32,6 +33,14 @@ export class WorkshopService {
         this.workshops = workshops;
         this.workshopsUpdated.next(...[this.workshops]);
       });
+  }
+
+  setSelectedWorkshop(workshop: Workshop) {
+    this.selectedWorkshop = workshop;
+  }
+
+  getSelectedWorkshop(): Workshop {
+    return this.selectedWorkshop;
   }
 
   normalizeWorkshop(apiWorkshop: any): Workshop {
