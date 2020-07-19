@@ -17,5 +17,18 @@ authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZib2xj
     "slug": "what-to-do-when-everything-is-blue"
 }
 
+PUT http://localhost:3000/api/workshops/5f143071a3f8104f3026339d HTTP/1.1
+content-type: application/json
+authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZib2xjaWNAdHZ6LmhyIiwidXNlcklkIjoiNWYwYWRkZjI1NzVjNTk0NTg0NTNlNTRiIiwiaWF0IjoxNTk1MTgyMjg1LCJleHAiOjE1OTUxODU4ODV9.3BIRMxdT5X5zpNDgMwsbQgC_KDJoeFcyx6rF8SD_f40
+
+{
+    "title": "What to do when everything is blue? A workshop about depression",
+    "summary": "We often hear that somebody is \"feeling down\" or \"depressed\" when he or she is going through a rough period. We usually advise those people to lift their heads up and just look at the bright side, completely oblivious to the complexities and challenges of their emotions. Depression today represents one of the most common psychological disorders, and although today there exist numerous and effective treatments only a small percentage of people are getting the help they deserve. In this workshop we will elaborate on depression, learn about it's signs and symptoms, treatment and methods of prevention.",
+    "address": "Savjetovalište TVZ, Vrbik 8, 10000 Zagreb",
+    "dateTime": "2020-08-17T18:00:00.000Z",
+    "availablePlaces": 2,
+    "slug": "what-to-do-when-everything-is-blue"
+}
+
 DELETE http://localhost:3000/api/workshops/5f132e0c40bdc917685eec36 HTTP/1.1
 authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZib2xjaWNAdHZ6LmhyIiwidXNlcklkIjoiNWYwYWRkZjI1NzVjNTk0NTg0NTNlNTRiIiwiaWF0IjoxNTk1MDkyMjc1LCJleHAiOjE1OTUwOTU4NzV9.d7nD2iYKV8H2HiCQ9O3ZeCqaPu8sI0LIyHOGrjEIvCQ

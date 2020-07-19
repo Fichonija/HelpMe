@@ -49,6 +49,37 @@ router.get("/:id", (req, res, next) => {
   });
 });
 
+router.put("/:id", checkAuth, (req, res, next) => {
+  Workshop.findById(req.params.id)
+    .then((document) => {
+      if (document) {
+        document.title = req.body.title;
+        document.summary = req.body.summary;
+        document.address = req.body.address;
+        document.dateTime = new Date(req.body.dateTime);
+        document.availablePlaces = req.body.availablePlaces;
+        document.slug = req.body.slug;
+        return document.save();
+      } else {
+        res.status(404).json({
+          message: "Workshop not found.",
+        });
+      }
+    })
+    .then((result) => {
+      console.log(result);
+      res.status(200).json({
+        message: "Workshop " + req.params.id + " successfuly updated.",
+        data: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        message: err,
+      });
+    });
+});
+
 router.delete("/:id", checkAuth, (req, res, next) => {
   Workshop.deleteOne({ _id: req.params.id }).then((result) => {
     console.log(result);
