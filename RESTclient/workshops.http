@@ -6,15 +6,15 @@ GET http://localhost:3000/api/workshops/5f11d5dce023403f706e1583 HTTP/1.1
 
 POST http://localhost:3000/api/workshops HTTP/1.1
 content-type: application/json
-authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZib2xjaWNAdHZ6LmhyIiwidXNlcklkIjoiNWYwYWRkZjI1NzVjNTk0NTg0NTNlNTRiIiwiaWF0IjoxNTk1MDkyMjc1LCJleHAiOjE1OTUwOTU4NzV9.d7nD2iYKV8H2HiCQ9O3ZeCqaPu8sI0LIyHOGrjEIvCQ
+authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZib2xjaWNAdHZ6LmhyIiwidXNlcklkIjoiNWYwYWRkZjI1NzVjNTk0NTg0NTNlNTRiIiwiaWF0IjoxNTk1MTU3OTc1LCJleHAiOjE1OTUxNjE1NzV9.yuDHFyPOGJqZCE69CXPprFt208Nm9yfv67Qs-uL8pEY
 
 {
-    "title": "Who's still afraid of fear? A workshop about anxiety.",
-    "summary": "A long, long time ago, our ancestors were in constant danger. In this environment an adaptive emotion evolved, that allowed them to forsee and react to threats - anxiety. Even though nowdays we rarely find ourselves in mortal danger, we are \"stuck\" with an excitable mind that is quickly overwhelmed by fear. Today anxiety is recognized as a leading psychological disorder. In this workshop we will learn about the nature of this disorder and how to prevent it.",
+    "title": "What to do when everything is blue? A workshop about depression",
+    "summary": "We often hear that somebody is \"feeling down\" or \"depressed\" when he or she is going through a rough period. We usually advise those people to lift their heads up and just look at the bright side, completely oblivious to the complexities and challenges of their emotions. Depression today represents one of the most common psychological disorders, and although today there exist numerous and effective treatments only a small percentage of people are getting the help they deserve. In this workshop we will elaborate on depression, learn about it's signs and symptoms, treatment and methods of prevention.",
     "address": "Savjetovalište TVZ, Vrbik 8, 10000 Zagreb",
-    "dateTime": "2020-07-17T16:43:04.367Z",
-    "availablePlaces": 20,
-    "slug": "who-is-still-afraid-of-fear"
+    "dateTime": "2020-08-17T18:00:00.000Z",
+    "availablePlaces": 2,
+    "slug": "what-to-do-when-everything-is-blue"
 }
 
 DELETE http://localhost:3000/api/workshops/5f132e0c40bdc917685eec36 HTTP/1.1
