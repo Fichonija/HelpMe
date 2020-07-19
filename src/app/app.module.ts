@@ -6,7 +6,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
@@ -23,11 +22,11 @@ import { PostDetailComponent } from "./posts/post-detail/post-detail.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { AuthInterceptor } from "./auth/auth.interceptor";
 import { PostCreateComponent } from "./posts/post-create/post-create.component";
-import { PostCreateDialogComponent } from "./posts/post-create/post-create-dialog/post-create-dialog.component";
 import { WorkshopListComponent } from "./workshops/workshop-list/workshop-list.component";
 import { WorkshopDetailComponent } from "./workshops/workshop-detail/workshop-detail.component";
 import { WorkshopApplyDialogComponent } from "./workshops/workshop-detail/workshop-apply-dialog/workshop-apply-dialog.component";
 import { WorkshopCreateComponent } from "./workshops/workshop-create/workshop-create.component";
+import { AdminCrudDialogComponent } from "./utility/dialogs/admin-crud-dialog.component";
 
 @NgModule({
   declarations: [
@@ -37,11 +36,11 @@ import { WorkshopCreateComponent } from "./workshops/workshop-create/workshop-cr
     PostListComponent,
     PostDetailComponent,
     PostCreateComponent,
-    PostCreateDialogComponent,
     WorkshopListComponent,
     WorkshopDetailComponent,
     WorkshopApplyDialogComponent,
     WorkshopCreateComponent,
+    AdminCrudDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +62,6 @@ import { WorkshopCreateComponent } from "./workshops/workshop-create/workshop-cr
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [PostCreateDialogComponent, WorkshopApplyDialogComponent],
+  entryComponents: [WorkshopApplyDialogComponent, AdminCrudDialogComponent],
 })
 export class AppModule {}

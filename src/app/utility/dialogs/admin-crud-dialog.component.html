@@ -1,7 +1,8 @@
-<h2 mat-dialog-title>Save new Post?</h2>
+<h2 mat-dialog-title>{{ this.data.title }}</h2>
 <div mat-dialog-content>
   <p>
-    This action will save new post with title <i>{{ this.data.postTitle }}</i
+    This action will {{ this.data.action }} with title
+    <i>{{ this.data.model.title }}</i
     >. Are you sure you want to continue?
   </p>
 </div>
