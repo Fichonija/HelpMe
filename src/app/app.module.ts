@@ -11,6 +11,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatIconModule } from "@angular/material/icon";
 
 import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
 
@@ -56,6 +57,7 @@ import { AdminCrudDialogComponent } from "./utility/dialogs/admin-crud-dialog.co
     MatButtonModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatIconModule,
     CKEditorModule,
   ],
   providers: [
