@@ -1,5 +1,9 @@
 <h2 mat-dialog-title>Apply to workshop?</h2>
-<div mat-dialog-content>
+<div class="participant-added-message" *ngIf="this.participantAdded">
+  Participant successfuly added to workshop!
+</div>
+<mat-spinner *ngIf="this.loading"></mat-spinner>
+<div mat-dialog-content *ngIf="!this.loading && !this.participantAdded">
   <p>
     This action will apply you to the workshop
     <i>{{ this.data.workshopTitle }}</i
@@ -11,7 +15,7 @@
       matInput
       [(ngModel)]="data.fullname"
       placeholder="e.g. Ivan Horvat"
-      #fullname="ngModel"
+      [formControl]="fullnameControl"
       required
     />
     <mat-error>Please provide valid full name.</mat-error>
@@ -21,7 +25,7 @@
     <input
       matInput
       [(ngModel)]="data.email"
-      #email="ngModel"
+      [formControl]="emailControl"
       placeholder="e.g. ihorvat@tvz.hr"
       required
       email
@@ -30,13 +34,23 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button mat-dialog-close *ngIf="!this.participantAdded">
+    Cancel
+  </button>
   <button
     mat-button
     color="accent"
-    [disabled]="fullname.invalid || email.invalid"
+    [disabled]="this.fullnameControl.invalid || this.emailControl.invalid"
     (click)="onApplyClicked()"
+    *ngIf="!this.participantAdded"
   >
     Apply
+  </button>
+  <button
+    mat-button
+    [mat-dialog-close]="this.newParticipant"
+    *ngIf="this.participantAdded"
+  >
+    OK
   </button>
 </div>

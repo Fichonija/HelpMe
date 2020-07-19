@@ -1,3 +1,5 @@
+import { WorkshopParticipant } from "./workshopParticipant.model";
+
 export interface Workshop {
   id: string;
   title: string;
@@ -5,6 +7,6 @@ export interface Workshop {
   address: string;
   dateTime: Date;
   availablePlaces: number;
-  takenPlaces: number;
+  participants: WorkshopParticipant[];
   slug: string;
 }

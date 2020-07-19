@@ -45,12 +45,15 @@ export class WorkshopDetailComponent implements OnInit {
     const dialogRef = this.workshopApplyDialog.open(
       WorkshopApplyDialogComponent,
       {
-        data: { workshopTitle: this.workshop.title },
+        data: {
+          workshopid: this.workshop.id,
+          workshopTitle: this.workshop.title,
+        },
       }
     );
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        console.log(result);
+        this.workshop.participants.push(result);
       }
     });
   }

@@ -71,7 +71,7 @@ export class WorkshopService {
       address: apiWorkshop.address,
       dateTime: new Date(apiWorkshop.dateTime),
       availablePlaces: apiWorkshop.availablePlaces,
-      takenPlaces: apiWorkshop.takenPlaces,
+      participants: apiWorkshop.participants,
       slug: apiWorkshop.slug,
     };
   }

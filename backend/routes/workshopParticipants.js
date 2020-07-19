@@ -27,6 +27,12 @@ router.post("", (req, res, next) => {
         message: "Workshop participant added successfuly.",
         data: workshopParticipant.id,
       });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        message: err,
+        data: null,
+      });
     });
 });
 
