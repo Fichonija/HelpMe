@@ -3,6 +3,7 @@ import { Workshop } from "../workshop.model";
 import { WorkshopService } from "../workshop.service";
 import { Subscription } from "rxjs";
 import { AuthService } from "src/app/auth/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-workshop-list",
@@ -20,7 +21,8 @@ export class WorkshopListComponent implements OnInit, OnDestroy {
 
   constructor(
     private workshopService: WorkshopService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -53,4 +55,11 @@ export class WorkshopListComponent implements OnInit, OnDestroy {
   onWorkshopSelected(workshop: Workshop) {
     this.workshopService.setSelectedWorkshop(workshop);
   }
+
+  onWorkshopEdit(workshop: Workshop) {
+    this.workshopService.setWorkshopForEdit(workshop);
+    this.router.navigate(["workshops", "edit"]);
+  }
+
+  onWorkshopDelete() {}
 }

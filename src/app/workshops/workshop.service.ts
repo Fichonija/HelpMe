@@ -11,6 +11,7 @@ export class WorkshopService {
 
   private workshops: Workshop[] = [];
   private selectedWorkshop: Workshop;
+  private workshopForEdit: Workshop;
   private workshopsUpdated: Subject<Workshop[]> = new Subject<Workshop[]>();
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -30,7 +31,6 @@ export class WorkshopService {
         })
       )
       .subscribe((workshops) => {
-        console.log(workshops);
         this.workshops = workshops;
         this.workshopsUpdated.next(...[this.workshops]);
       });
@@ -72,12 +72,36 @@ export class WorkshopService {
       );
   }
 
+  updateWorkshop(
+    id: string,
+    workshop: Workshop
+  ): Observable<{ message: string; data: any }> {
+    return this.http
+      .put<{ message: string; data: any }>(
+        this.workshopsEndpoint + "/" + id,
+        workshop
+      )
+      .pipe(
+        tap((res) => {
+          console.log(res);
+        })
+      );
+  }
+
   setSelectedWorkshop(workshop: Workshop) {
     this.selectedWorkshop = workshop;
   }
 
   getSelectedWorkshop(): Workshop {
     return this.selectedWorkshop;
+  }
+
+  setWorkshopForEdit(workshop: Workshop) {
+    this.workshopForEdit = workshop;
+  }
+
+  getWorkshopForEdit(): Workshop {
+    return this.workshopForEdit;
   }
 
   normalizeWorkshop(apiWorkshop: any): Workshop {
