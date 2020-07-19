@@ -9,7 +9,7 @@
       </a>
     </h2>
     <div>{{ workshop.summary }}</div>
-    <div class="workshop-actions">
+    <div class="workshop-actions" *ngIf="this.userAuthenticated">
       <button><mat-icon color="primary">edit</mat-icon></button>
       <button><mat-icon color="primary">delete</mat-icon></button>
     </div>
