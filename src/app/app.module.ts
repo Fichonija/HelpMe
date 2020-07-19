@@ -6,6 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
@@ -26,6 +27,7 @@ import { PostCreateDialogComponent } from "./posts/post-create/post-create-dialo
 import { WorkshopListComponent } from "./workshops/workshop-list/workshop-list.component";
 import { WorkshopDetailComponent } from "./workshops/workshop-detail/workshop-detail.component";
 import { WorkshopApplyDialogComponent } from "./workshops/workshop-detail/workshop-apply-dialog/workshop-apply-dialog.component";
+import { WorkshopCreateComponent } from "./workshops/workshop-create/workshop-create.component";
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { WorkshopApplyDialogComponent } from "./workshops/workshop-detail/worksh
     WorkshopListComponent,
     WorkshopDetailComponent,
     WorkshopApplyDialogComponent,
+    WorkshopCreateComponent,
   ],
   imports: [
     BrowserModule,

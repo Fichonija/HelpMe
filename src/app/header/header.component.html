@@ -21,6 +21,15 @@
         >Workshops</a
       >
     </li>
+    <li>
+      <a
+        *ngIf="this.userAuthenticated"
+        mat-button
+        routerLink="/workshops/create"
+        [routerLinkActive]="'mat-accent'"
+        >New Workshop</a
+      >
+    </li>
     <li class="nav-separator"></li>
     <li>
       <a

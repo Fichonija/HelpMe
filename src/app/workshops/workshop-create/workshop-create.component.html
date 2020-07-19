@@ -1,0 +1,67 @@
+<mat-card>
+  <form [formGroup]="workshopForm">
+    <mat-form-field>
+      <input
+        matInput
+        required
+        formControlName="workshopTitle"
+        placeholder="Workshop title"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        required
+        formControlName="workshopSummary"
+        rows="4"
+        placeholder="Workshop summary"
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        required
+        formControlName="workshopAddress"
+        placeholder="Workshop address"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="datetime-local"
+        formControlName="workshopDateTime"
+        required
+        placeholder="Workshop date and time"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        required
+        formControlName="workshopAvailablePlaces"
+        placeholder="Available seats in workshop"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        required
+        formControlName="workshopSlug"
+        placeholder="Workshop url identifier"
+      />
+      <mat-hint>{{
+        "https://helpme/workshops/" + this.workshopForm.value.workshopSlug
+      }}</mat-hint>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      type="submit"
+      color="primary"
+      [disabled]="this.workshopForm.invalid"
+      (click)="onSaveWorkshop()"
+    >
+      Save Post
+    </button>
+  </form>
+</mat-card>
