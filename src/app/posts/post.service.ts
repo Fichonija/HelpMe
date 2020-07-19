@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Subject, Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { map, tap } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 
@@ -66,18 +66,18 @@ export class PostService {
       );
   }
 
-  addPost(post: Post): void {
-    this.http
+  addPost(post: Post): Observable<{ message: string; data: string }> {
+    return this.http
       .post<{ message: string; data: string }>(this.postEndpoint, post)
-      .subscribe((res) => {
-        console.log(res.message);
+      .pipe(
+        tap((res) => {
+          console.log(res.message);
 
-        post.id = res.data;
-        this.posts.push(post);
-        this.postsUpdated.next([...this.posts]);
-
-        this.router.navigate(["/"]);
-      });
+          post.id = res.data;
+          this.posts.push(post);
+          this.postsUpdated.next([...this.posts]);
+        })
+      );
   }
 
   setSelectedPost(post: Post): void {

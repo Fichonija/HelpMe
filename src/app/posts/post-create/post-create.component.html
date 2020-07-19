@@ -1,4 +1,8 @@
-<mat-card>
+<mat-spinner *ngIf="this.loading"></mat-spinner>
+<div class="post-created-message" *ngIf="this.postCreated && !this.loading">
+  Post created successfuly!
+</div>
+<mat-card *ngIf="!this.loading && !this.postCreated">
   <form [formGroup]="postForm">
     <mat-form-field>
       <input

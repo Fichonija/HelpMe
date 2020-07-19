@@ -6,7 +6,7 @@ import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 import { PostService } from "../post.service";
 import { Post } from "../post.model";
-import { PostCreateDialogComponent } from "./post-create-dialog/post-create-dialog.component";
+import { AdminCrudDialogComponent } from "src/app/utility/dialogs/admin-crud-dialog.component";
 
 @Component({
   selector: "app-post-create",
@@ -14,6 +14,9 @@ import { PostCreateDialogComponent } from "./post-create-dialog/post-create-dial
   styleUrls: ["./post-create.component.css"],
 })
 export class PostCreateComponent {
+  public loading: boolean = false;
+  public postCreated: boolean = false;
+
   public editor = ClassicEditor;
   public editorConfig = {
     placeholder: "Post content",
@@ -32,13 +35,19 @@ export class PostCreateComponent {
   ) {}
 
   onSavePost() {
-    const dialogRef = this.postCreateDialog.open(PostCreateDialogComponent, {
+    const dialogRef = this.postCreateDialog.open(AdminCrudDialogComponent, {
       width: "500px",
-      data: { postTitle: this.postForm.value.postTitle },
+      data: {
+        title: "Add new Post?",
+        action: "add new post",
+        model: { title: this.postForm.value.postTitle },
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result == true) {
+      if (result) {
+        this.loading = true;
+
         let newPost: Post = {
           id: "",
           title: this.postForm.get("postTitle").value,
@@ -46,7 +55,10 @@ export class PostCreateComponent {
           slug: this.postForm.get("postSlug").value,
           content: this.editorContent,
         };
-        this.postService.addPost(newPost);
+        this.postService.addPost(newPost).subscribe((res) => {
+          this.postCreated = true;
+          this.loading = false;
+        });
       }
     });
   }

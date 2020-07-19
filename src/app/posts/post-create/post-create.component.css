@@ -1,3 +1,7 @@
+mat-spinner {
+  margin: 0 auto;
+}
+
 mat-form-field {
   width: 100%;
 }
@@ -8,4 +12,9 @@ mat-form-field {
 
 button {
   margin-top: 25px;
+}
+
+.post-created-message {
+  width: fit-content;
+  margin: 50px auto;
 }
