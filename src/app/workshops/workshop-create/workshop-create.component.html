@@ -7,6 +7,7 @@
         formControlName="workshopTitle"
         placeholder="Workshop title"
       />
+      <mat-error>Please enter a workshop title.</mat-error>
     </mat-form-field>
     <mat-form-field>
       <textarea
@@ -16,6 +17,7 @@
         rows="4"
         placeholder="Workshop summary"
       ></textarea>
+      <mat-error>Please enter a workshop summary.</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input
@@ -24,6 +26,7 @@
         formControlName="workshopAddress"
         placeholder="Workshop address"
       />
+      <mat-error>Please enter a workshop address.</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input
@@ -33,14 +36,16 @@
         required
         placeholder="Workshop date and time"
       />
+      <mat-error>Please enter a workshop date and time.</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input
         matInput
-        required
+        type="number"
         formControlName="workshopAvailablePlaces"
         placeholder="Available seats in workshop"
       />
+      <mat-error>Please enter a number between 1 and 100.</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input
@@ -61,7 +66,7 @@
       [disabled]="this.workshopForm.invalid"
       (click)="onSaveWorkshop()"
     >
-      Save Post
+      Save Workshop
     </button>
   </form>
 </mat-card>

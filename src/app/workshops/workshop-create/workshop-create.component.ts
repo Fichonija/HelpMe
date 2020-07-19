@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-workshop-create",
@@ -12,7 +12,11 @@ export class WorkshopCreateComponent {
     workshopSummary: new FormControl(""),
     workshopAddress: new FormControl(""),
     workshopDateTime: new FormControl(""),
-    workshopAvailablePlaces: new FormControl(""),
+    workshopAvailablePlaces: new FormControl("", [
+      Validators.min(1),
+      Validators.max(100),
+      Validators.required,
+    ]),
     workshopSlug: new FormControl(""),
   });
 

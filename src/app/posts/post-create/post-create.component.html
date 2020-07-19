@@ -7,6 +7,7 @@
         formControlName="postTitle"
         placeholder="Post title"
       />
+      <mat-error>Please enter a post title.</mat-error>
     </mat-form-field>
     <mat-form-field>
       <textarea
@@ -16,6 +17,7 @@
         rows="4"
         placeholder="Post summary"
       ></textarea>
+      <mat-error>Please enter a post summary.</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input
@@ -27,6 +29,7 @@
       <mat-hint>{{
         "https://helpme/posts/" + this.postForm.value.postSlug
       }}</mat-hint>
+      <mat-error>Please enter a post url identifier.</mat-error>
     </mat-form-field>
   </form>
 
