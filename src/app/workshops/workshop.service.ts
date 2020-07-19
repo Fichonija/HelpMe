@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { Workshop } from "./workshop.model";
 import { Subject, Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { map, tap } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Injectable({ providedIn: "root" })
 export class WorkshopService {
@@ -12,7 +13,7 @@ export class WorkshopService {
   private selectedWorkshop: Workshop;
   private workshopsUpdated: Subject<Workshop[]> = new Subject<Workshop[]>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   getWorkshopsUpdatedListener(): Observable<Workshop[]> {
     return this.workshopsUpdated.asObservable();
@@ -51,6 +52,22 @@ export class WorkshopService {
               return this.normalizeWorkshop(workshops);
             }
           });
+        })
+      );
+  }
+
+  addWorkshop(
+    workshop: Workshop
+  ): Observable<{ message: string; data: string }> {
+    return this.http
+      .post<{ message: string; data: string }>(this.workshopsEndpoint, workshop)
+      .pipe(
+        tap((res) => {
+          console.log(res.message);
+
+          workshop.id = res.data;
+          this.workshops.push(workshop);
+          this.workshopsUpdated.next([...this.workshops]);
         })
       );
   }
