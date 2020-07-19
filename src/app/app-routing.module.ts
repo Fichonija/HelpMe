@@ -26,6 +26,11 @@ const routes: Routes = [
     component: WorkshopCreateComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path: "workshops/edit",
+    component: WorkshopCreateComponent,
+    canActivate: [AuthGuard],
+  },
   { path: "workshops/:slug", component: WorkshopDetailComponent },
 ];
 
