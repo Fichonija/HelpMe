@@ -61,5 +61,5 @@ export class WorkshopListComponent implements OnInit, OnDestroy {
     this.router.navigate(["workshops", "edit"]);
   }
 
-  onWorkshopDelete() {}
+  onWorkshopDelete(workshop: Workshop) {}
 }

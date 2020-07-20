@@ -1,10 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { WorkshopService } from "../workshop.service";
 import { MatDialog } from "@angular/material/dialog";
-import { AdminCrudDialogComponent } from "src/app/utility/dialogs/admin-crud-dialog.component";
-import { Workshop } from "../workshop.model";
 import { ActivatedRoute, UrlSegment } from "@angular/router";
+
+import { WorkshopService } from "../workshop.service";
+import { Workshop } from "../workshop.model";
+import { getIsoDateTimeWithOffset } from "../../utility/helpers/dateTimeHelpers";
+import { AdminCrudDialogComponent } from "src/app/utility/dialogs/admin-crud-dialog.component";
 
 @Component({
   selector: "app-workshop-create",
@@ -52,15 +54,15 @@ export class WorkshopCreateComponent implements OnInit {
           workshopTitle: this.workshopForEdit.title,
           workshopSummary: this.workshopForEdit.summary,
           workshopAddress: this.workshopForEdit.address,
-          workshopDateTime: this.getIsoDateTimeWithOffset(
+          workshopDateTime: getIsoDateTimeWithOffset(
             this.workshopForEdit.dateTime
           ),
           workshopAvailablePlaces: this.workshopForEdit.availablePlaces,
           workshopSlug: this.workshopForEdit.slug,
         });
       } else if (this.actionType == "create") {
-        this.dialogTitle = "Add new Workshop?";
-        this.dialogAction = "add new workshop";
+        this.dialogTitle = "Create new Workshop?";
+        this.dialogAction = "create new workshop";
       }
     });
   }
@@ -123,11 +125,11 @@ export class WorkshopCreateComponent implements OnInit {
       });
   }
 
-  getIsoDateTimeWithOffset(workshopDateTime: Date): string {
-    let offset = new Date().getTimezoneOffset() * 60000;
-    let localIsoDateTime = new Date(workshopDateTime.valueOf() - offset)
-      .toISOString()
-      .slice(0, 16);
-    return localIsoDateTime;
-  }
+  // getIsoDateTimeWithOffset(workshopDateTime: Date): string {
+  //   let offset = new Date().getTimezoneOffset() * 60000;
+  //   let localIsoDateTime = new Date(workshopDateTime.valueOf() - offset)
+  //     .toISOString()
+  //     .slice(0, 16);
+  //   return localIsoDateTime;
+  // }
 }

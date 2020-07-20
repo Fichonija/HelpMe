@@ -8,8 +8,12 @@
     </h2>
     <div>{{ post.summary }}</div>
     <div class="post-actions" *ngIf="this.userAuthenticated">
-      <button><mat-icon color="primary">edit</mat-icon></button>
-      <button><mat-icon color="primary">delete</mat-icon></button>
+      <button>
+        <mat-icon color="primary" (click)="onPostEdit(post)">edit</mat-icon>
+      </button>
+      <button>
+        <mat-icon color="primary" (click)="onPostDelete(post)">delete</mat-icon>
+      </button>
     </div>
   </mat-card>
 </div>

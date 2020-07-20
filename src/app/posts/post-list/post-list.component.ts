@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Subscription } from "rxjs";
+import { Router } from "@angular/router";
 
 import { Post } from "../post.model";
 import { PostService } from "../post.service";
-import { Subscription } from "rxjs";
 import { AuthService } from "src/app/auth/auth.service";
 
 @Component({
@@ -21,7 +22,8 @@ export class PostListComponent implements OnInit, OnDestroy {
 
   constructor(
     private postService: PostService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -54,4 +56,11 @@ export class PostListComponent implements OnInit, OnDestroy {
   onPostSelected(post: Post) {
     this.postService.setSelectedPost(post);
   }
+
+  onPostEdit(post: Post) {
+    this.postService.setPostForEdit(post);
+    this.router.navigate(["posts", "edit"]);
+  }
+
+  onPostDelete(post: Post) {}
 }

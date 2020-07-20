@@ -12,6 +12,7 @@ export class PostService {
 
   private posts: Post[] = [];
   private selectedPost: Post = null;
+  private postForEdit: Post = null;
   private postsUpdated: Subject<Post[]> = new Subject<Post[]>();
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -80,12 +81,39 @@ export class PostService {
       );
   }
 
+  updatePost(
+    id: string,
+    post: Post
+  ): Observable<{ message: string; data: any }> {
+    return this.http
+      .put<{ message: string; data: any }>(this.postEndpoint + "/" + id, post)
+      .pipe(
+        tap((response) => {
+          if (response.data) {
+            console.log(response);
+
+            let postIndex = this.posts.findIndex((p) => p.id == id);
+            this.posts[postIndex] = response.data;
+            this.postsUpdated.next([...this.posts]);
+          }
+        })
+      );
+  }
+
   setSelectedPost(post: Post): void {
     this.selectedPost = post;
   }
 
   getSelectedPost(): Post {
     return this.selectedPost;
+  }
+
+  setPostForEdit(post: Post) {
+    this.postForEdit = post;
+  }
+
+  getPostForEdit(): Post {
+    return this.postForEdit;
   }
 
   normalizePost(apiPost: any): Post {
