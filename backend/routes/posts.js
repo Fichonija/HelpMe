@@ -45,6 +45,32 @@ router.get("/:id", (req, res, next) => {
   });
 });
 
+router.put("/:id", checkAuth, (req, res, next) => {
+  Post.findById(req.params.id)
+    .then((document) => {
+      if (document) {
+        document.title = req.body.title;
+        document.summary = req.body.summary;
+        document.slug = req.body.slug;
+        document.content = req.body.content;
+        return document.save();
+      } else {
+        res.status(404).json({ message: "Post not found." });
+      }
+    })
+    .then((result) => {
+      console.log(result);
+      res.status(200).json({
+        message: "Post update successfuly.",
+        data: result,
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({ message: error });
+    });
+});
+
 router.delete("/:id", checkAuth, (req, res, next) => {
   Post.deleteOne({ _id: req.params.id }).then((result) => {
     console.log(result);
