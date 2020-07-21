@@ -27,6 +27,10 @@ a:hover {
   cursor: pointer;
 }
 
+.workshop-actions button:focus {
+  outline: none;
+}
+
 mat-icon {
   margin-right: 10px;
   font-size: 1.8rem;
