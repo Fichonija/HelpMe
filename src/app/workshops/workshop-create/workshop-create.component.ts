@@ -15,7 +15,8 @@ import { AdminCrudDialogComponent } from "src/app/utility/dialogs/admin-crud-dia
 })
 export class WorkshopCreateComponent implements OnInit {
   loading: boolean = false;
-  workshopCreated: boolean = false;
+  workshopCreatedOrEdited: boolean = false;
+  successMessage: string;
 
   actionType: string;
   workshopForEdit: Workshop;
@@ -100,7 +101,8 @@ export class WorkshopCreateComponent implements OnInit {
       slug: this.workshopForm.get("workshopSlug").value,
     };
     this.workshopService.addWorkshop(newWorkshop).subscribe((res) => {
-      this.workshopCreated = true;
+      this.successMessage = "Workshop successfuly created!";
+      this.workshopCreatedOrEdited = true;
       this.loading = false;
     });
   }
@@ -120,16 +122,11 @@ export class WorkshopCreateComponent implements OnInit {
     this.workshopService
       .updateWorkshop(this.workshopForEdit.id, editedWorkshop)
       .subscribe((res) => {
-        this.workshopCreated = true;
+        console.log(res);
+
+        this.successMessage = "Workshop successfuly edited!";
+        this.workshopCreatedOrEdited = true;
         this.loading = false;
       });
   }
-
-  // getIsoDateTimeWithOffset(workshopDateTime: Date): string {
-  //   let offset = new Date().getTimezoneOffset() * 60000;
-  //   let localIsoDateTime = new Date(workshopDateTime.valueOf() - offset)
-  //     .toISOString()
-  //     .slice(0, 16);
-  //   return localIsoDateTime;
-  // }
 }

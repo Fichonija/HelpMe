@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Workshop } from "./workshop.model";
 import { Subject, Observable } from "rxjs";
-import { map, tap } from "rxjs/operators";
+import { map, tap, pluck } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 
@@ -72,19 +72,21 @@ export class WorkshopService {
       );
   }
 
-  updateWorkshop(
-    id: string,
-    workshop: Workshop
-  ): Observable<{ message: string; data: any }> {
+  updateWorkshop(id: string, workshop: Workshop): Observable<{ data: any }> {
     return this.http
       .put<{ message: string; data: any }>(
         this.workshopsEndpoint + "/" + id,
         workshop
       )
       .pipe(
-        tap((res) => {
-          console.log(res);
-        })
+        tap((response) => {
+          console.log(response.message);
+
+          let workshopIndex = this.workshops.findIndex((w) => w.id == id);
+          this.workshops[workshopIndex] = response.data;
+          this.workshopsUpdated.next([...this.workshops]);
+        }),
+        pluck("data")
       );
   }
 

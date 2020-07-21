@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Subject, Observable } from "rxjs";
-import { map, tap } from "rxjs/operators";
+import { map, tap, pluck } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 
@@ -81,22 +81,20 @@ export class PostService {
       );
   }
 
-  updatePost(
-    id: string,
-    post: Post
-  ): Observable<{ message: string; data: any }> {
+  updatePost(id: string, post: Post): Observable<{ data: any }> {
     return this.http
       .put<{ message: string; data: any }>(this.postEndpoint + "/" + id, post)
       .pipe(
         tap((response) => {
           if (response.data) {
-            console.log(response);
+            console.log(response.message);
 
             let postIndex = this.posts.findIndex((p) => p.id == id);
             this.posts[postIndex] = response.data;
             this.postsUpdated.next([...this.posts]);
           }
-        })
+        }),
+        pluck("data")
       );
   }
 

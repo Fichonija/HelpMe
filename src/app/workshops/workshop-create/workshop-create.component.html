@@ -1,11 +1,11 @@
 <mat-spinner *ngIf="this.loading"></mat-spinner>
 <div
-  class="workshop-created-message"
-  *ngIf="this.workshopCreated && !this.loading"
+  class="workshop-success-message"
+  *ngIf="this.workshopCreatedOrEdited && !this.loading"
 >
-  Workshop created successfuly!
+  {{ this.successMessage }}
 </div>
-<mat-card *ngIf="!this.loading && !this.workshopCreated">
+<mat-card *ngIf="!this.loading && !this.workshopCreatedOrEdited">
   <form [formGroup]="workshopForm">
     <mat-form-field>
       <input

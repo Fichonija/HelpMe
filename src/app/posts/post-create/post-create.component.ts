@@ -114,6 +114,8 @@ export class PostCreateComponent implements OnInit {
     this.postService
       .updatePost(this.postForEdit.id, editedPost)
       .subscribe((response) => {
+        console.log(response);
+
         this.postCreated = true;
         this.loading = false;
       });
