@@ -5,4 +5,6 @@ import { Component } from "@angular/core";
   templateUrl: "./goals.component.html",
   styleUrls: ["./goals.component.css"],
 })
-export class GoalsComponent {}
+export class GoalsComponent {
+  public isLinear: boolean = false;
+}

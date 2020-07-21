@@ -11,6 +11,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatStepperModule } from "@angular/material/stepper";
 import { MatIconModule } from "@angular/material/icon";
 
 import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
@@ -59,6 +60,7 @@ import { GoalsComponent } from "./goals/goals.component";
     MatButtonModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatStepperModule,
     MatIconModule,
     CKEditorModule,
   ],
