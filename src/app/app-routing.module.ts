@@ -9,6 +9,7 @@ import { PostCreateComponent } from "./posts/post-create/post-create.component";
 import { WorkshopListComponent } from "./workshops/workshop-list/workshop-list.component";
 import { WorkshopDetailComponent } from "./workshops/workshop-detail/workshop-detail.component";
 import { WorkshopCreateComponent } from "./workshops/workshop-create/workshop-create.component";
+import { GoalsComponent } from "./goals/goals.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: "workshops/:slug", component: WorkshopDetailComponent },
+  { path: "goals", component: GoalsComponent },
 ];
 
 @NgModule({

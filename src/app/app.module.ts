@@ -28,6 +28,7 @@ import { WorkshopDetailComponent } from "./workshops/workshop-detail/workshop-de
 import { WorkshopApplyDialogComponent } from "./workshops/workshop-detail/workshop-apply-dialog/workshop-apply-dialog.component";
 import { WorkshopCreateComponent } from "./workshops/workshop-create/workshop-create.component";
 import { AdminCrudDialogComponent } from "./utility/dialogs/admin-crud-dialog.component";
+import { GoalsComponent } from "./goals/goals.component";
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AdminCrudDialogComponent } from "./utility/dialogs/admin-crud-dialog.co
     WorkshopDetailComponent,
     WorkshopApplyDialogComponent,
     WorkshopCreateComponent,
+    GoalsComponent,
     AdminCrudDialogComponent,
   ],
   imports: [

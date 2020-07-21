@@ -32,6 +32,12 @@
     </li>
     <li class="nav-separator"></li>
     <li>
+      <a mat-button routerLink="goals" [routerLinkActive]="'mat-accent'"
+        >Goals</a
+      >
+    </li>
+    <li class="nav-separator"></li>
+    <li>
       <a
         *ngIf="!this.userAuthenticated"
         mat-button
