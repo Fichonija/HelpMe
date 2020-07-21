@@ -98,6 +98,20 @@ export class PostService {
       );
   }
 
+  deletePost(id: string): Observable<{ data: any }> {
+    return this.http
+      .delete<{ message: string; data: any }>(this.postEndpoint + "/" + id)
+      .pipe(
+        tap((response) => {
+          console.log(response.message);
+
+          this.posts = this.posts.filter((p) => p.id != id);
+          this.postsUpdated.next([...this.posts]);
+        }),
+        pluck("data")
+      );
+  }
+
   setSelectedPost(post: Post): void {
     this.selectedPost = post;
   }

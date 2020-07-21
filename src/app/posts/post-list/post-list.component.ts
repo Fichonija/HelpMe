@@ -5,6 +5,8 @@ import { Router } from "@angular/router";
 import { Post } from "../post.model";
 import { PostService } from "../post.service";
 import { AuthService } from "src/app/auth/auth.service";
+import { MatDialog } from "@angular/material/dialog";
+import { AdminCrudDialogComponent } from "src/app/utility/dialogs/admin-crud-dialog.component";
 
 @Component({
   selector: "app-post-list",
@@ -23,6 +25,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   constructor(
     private postService: PostService,
     private authService: AuthService,
+    public postDeleteDialog: MatDialog,
     private router: Router
   ) {}
 
@@ -62,5 +65,23 @@ export class PostListComponent implements OnInit, OnDestroy {
     this.router.navigate(["posts", "edit"]);
   }
 
-  onPostDelete(post: Post) {}
+  onPostDelete(post: Post) {
+    const dialogRef = this.postDeleteDialog.open(AdminCrudDialogComponent, {
+      width: "500px",
+      data: {
+        title: "Delete Post?",
+        action: "delete post",
+        model: { title: post.title },
+      },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.loading = true;
+        this.postService.deletePost(post.id).subscribe((response) => {
+          this.loading = false;
+          console.log(response);
+        });
+      }
+    });
+  }
 }
