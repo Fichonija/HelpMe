@@ -4,6 +4,8 @@ import { WorkshopService } from "../workshop.service";
 import { Subscription } from "rxjs";
 import { AuthService } from "src/app/auth/auth.service";
 import { Router } from "@angular/router";
+import { MatDialog } from "@angular/material/dialog";
+import { AdminCrudDialogComponent } from "src/app/utility/dialogs/admin-crud-dialog.component";
 
 @Component({
   selector: "app-workshop-list",
@@ -22,6 +24,7 @@ export class WorkshopListComponent implements OnInit, OnDestroy {
   constructor(
     private workshopService: WorkshopService,
     private authService: AuthService,
+    public workshopDeleteDialog: MatDialog,
     private router: Router
   ) {}
 
@@ -61,5 +64,25 @@ export class WorkshopListComponent implements OnInit, OnDestroy {
     this.router.navigate(["workshops", "edit"]);
   }
 
-  onWorkshopDelete(workshop: Workshop) {}
+  onWorkshopDelete(workshop: Workshop) {
+    const dialogRef = this.workshopDeleteDialog.open(AdminCrudDialogComponent, {
+      width: "500px",
+      data: {
+        title: "Delete Workshop?",
+        action: "delete workshop",
+        model: { title: workshop.title },
+      },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.loading = true;
+        this.workshopService
+          .deleteWorkshop(workshop.id)
+          .subscribe((response) => {
+            this.loading = false;
+            console.log(response);
+          });
+      }
+    });
+  }
 }

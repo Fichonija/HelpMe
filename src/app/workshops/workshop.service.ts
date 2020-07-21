@@ -90,6 +90,20 @@ export class WorkshopService {
       );
   }
 
+  deleteWorkshop(id: string): Observable<{ data: any }> {
+    return this.http
+      .delete<{ message: string; data: any }>(this.workshopsEndpoint + "/" + id)
+      .pipe(
+        tap((response) => {
+          console.log(response.message);
+
+          this.workshops = this.workshops.filter((w) => w.id != id);
+          this.workshopsUpdated.next([...this.workshops]);
+        }),
+        pluck("data")
+      );
+  }
+
   setSelectedWorkshop(workshop: Workshop) {
     this.selectedWorkshop = workshop;
   }

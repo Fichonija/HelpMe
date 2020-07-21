@@ -81,12 +81,17 @@ router.put("/:id", checkAuth, (req, res, next) => {
 });
 
 router.delete("/:id", checkAuth, (req, res, next) => {
-  Workshop.deleteOne({ _id: req.params.id }).then((result) => {
-    console.log(result);
-    res
-      .status(200)
-      .json({ message: "Workshop " + req.params.id + " deleted." });
-  });
+  Workshop.deleteOne({ _id: req.params.id })
+    .then((result) => {
+      console.log(result);
+      res
+        .status(200)
+        .json({ message: "Workshop " + req.params.id + " deleted." });
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({ message: error });
+    });
 });
 
 module.exports = router;
