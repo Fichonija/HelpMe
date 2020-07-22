@@ -1,57 +1,346 @@
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-  {{ !isLinear ? "Enable linear mode" : "Disable linear mode" }}
-</button>
+<div class="goals-main">
+  <div class="goals-introduction" *ngIf="page == 'introduction'">
+    <h2>Setting Goals</h2>
+    <p>
+      Do you ever feel like you're working hard but not getting anywhere? Maybe
+      you see little improvement in your skills or achievements when you reflect
+      on the last five or 10 years. Or perhaps you struggle to see how you'll
+      fulfil your ambitions during the next few years.
+    </p>
+    <p>
+      Many people spend their lives drifting from one job to another, or rushing
+      around trying to get more done while actually accomplishing very little.
+      Setting SMART goals means you can clarify your ideas, focus your efforts,
+      use your time and resources productively, and increase your chances of
+      achieving what you want in life.
+    </p>
+    <p>
+      In this article, we'll explore what SMART goals are, and we'll look at how
+      you can use them to achieve your objectives.
+    </p>
+    <button mat-raised-button color="primary" (click)="showPage('smart')">
+      What are SMART Goals?
+    </button>
+  </div>
 
-<mat-vertical-stepper [linear]="isLinear" #stepper>
-  <mat-step>
-    <ng-template matStepLabel>Specific</ng-template>
+  <div class="goals-smart" *ngIf="page == 'smart'">
+    <h2>SMART Goals</h2>
+    <p>
+      SMART is an acronym that you can use to guide your goal setting. To make
+      sure your goals are clear and reachable, each one should be:
+    </p>
+    <ul>
+      <li><b>S</b>pecific (simple, sensible, significant).</li>
+      <li><b>M</b>easurable (meaningful, motivating).</li>
+      <li><b>A</b>chievable (agreed, attainable).</li>
+      <li>
+        <b>R</b>elevant (reasonable, realistic and resourced, results-based).
+      </li>
+      <li>
+        <b>T</b>ime bound (time-based, time limited, time/cost limited, timely,
+        time-sensitive).
+      </li>
+    </ul>
+    <p>
+      In the next excercise you will learn how to set SMART goals. The purpose
+      of the excercise is to learn how to set actionable goals on a concrete
+      example, by using something you want to achieve in your own life. It is
+      advisable to solve the excercise to achieve the best result.
+    </p>
+    <p>What goal do you want to achieve currently?</p>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="e.g. I want to have a good grade in my class."
+        [(ngModel)]="goal"
+      />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="showPage('interactive')">
+      how to set SMART goals?
+    </button>
+  </div>
 
-    <div>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-  </mat-step>
+  <div class="goals-training" *ngIf="page == 'interactive'">
+    <mat-horizontal-stepper #stepper [linear]="isLinear">
+      <mat-step>
+        <ng-template matStepLabel>Specific</ng-template>
+        <div>
+          <p>
+            Current goal: <i>{{ goal }}</i>
+          </p>
+          <p>
+            Your goal should be clear and specific, otherwise you won't be able
+            to focus your efforts or feel truly motivated to achieve it. When
+            drafting your goal, try to answer the five "W" questions:
+          </p>
+          <ul>
+            <li>What do I want to accomplish?</li>
+            <li>Why is this goal important?</li>
+            <li>Who is involved?</li>
+            <li>Where is it located?</li>
+            <li>Which resources or limits are involved?</li>
+          </ul>
+          <p><b>Example</b></p>
+          <p>
+            Imagine that you have a class that is very interesting and important
+            to you, and you'd like to have a good grade in this class. A
+            specific goal would be "I want to have a grade of at least 4 in my
+            class".
+          </p>
+          <mat-form-field>
+            <textarea
+              matInput
+              placeholder="I want to have a grade of at least 4 in my class."
+              [(ngModel)]="specific"
+            ></textarea>
+          </mat-form-field>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+      </mat-step>
 
-  <mat-step>
-    <ng-template matStepLabel>Measurable</ng-template>
+      <mat-step>
+        <ng-template matStepLabel>Measurable</ng-template>
+        <div>
+          <p>
+            Current goal: <i>{{ goal }}</i>
+          </p>
+          <p>
+            It's important to have measurable goals, so that you can track your
+            progress and stay motivated. Assessing progress helps you to stay
+            focused, meet your deadlines, and feel the excitement of getting
+            closer to achieving your goal. A measurable goal should address
+            questions such as:
+          </p>
+          <ul>
+            <li>How much?</li>
+            <li>How many?</li>
+            <li>How will I know when it is accomplished?</li>
+          </ul>
+          <p><b>Example</b></p>
+          <p>
+            Although targeting a specific grade is already measurable, you can
+            help yourself further by creating measurable steps along the way.
+            You could say "I will achieve this grade by studying for two weeks
+            before the exam for at least two hours per day".
+          </p>
+          <mat-form-field>
+            <textarea
+              matInput
+              placeholder="I will achieve my grade by reading all of the required lectures for at least two times."
+              [(ngModel)]="measurable"
+            ></textarea>
+          </mat-form-field>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+          <button
+            mat-raised-button
+            class="margin-right"
+            color="primary"
+            matStepperPrevious
+          >
+            Back
+          </button>
+        </div>
+      </mat-step>
 
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-  </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Achievable</ng-template>
+        <div>
+          <p>
+            Current goal: <i>{{ goal }}</i>
+          </p>
+          <p>
+            Your goal also needs to be realistic and attainable to be
+            successful. In other words, it should stretch your abilities but
+            still remain possible. When you set an achievable goal, you may be
+            able to identify previously overlooked opportunities or resources
+            that can bring you closer to it. An achievable goal will usually
+            answer questions such as:
+          </p>
+          <ul>
+            <li>How can I accomplish this goal?</li>
+            <li>
+              How realistic is the goal, based on other constraints, such as
+              financial factors?
+            </li>
+          </ul>
+          <p><b>Example</b></p>
+          <p>
+            You might need to ask yourself is the grade or the learning plan you
+            set out for in scope of your current abilities? If not, you should
+            modify the original goal to be in line with your possibilities: "I
+            will take a day of rest and relaxation after every 4 days of
+            studying".
+          </p>
+          <mat-form-field>
+            <textarea
+              matInput
+              placeholder="I will take a day of rest and relaxation after every 4 days of studying."
+              [(ngModel)]="achievable"
+            ></textarea>
+          </mat-form-field>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+          <button
+            mat-raised-button
+            class="margin-right"
+            color="primary"
+            matStepperPrevious
+          >
+            Back
+          </button>
 
-  <mat-step>
-    <ng-template matStepLabel>Achievable</ng-template>
+          <mat-step>
+            <ng-template matStepLabel>Relevant</ng-template>
+            <div>
+              <p>
+                Current goal: <i>{{ goal }}</i>
+              </p>
+              <p>
+                This step is about ensuring that your goal matters to you, and
+                that it also aligns with other relevant goals. We all need
+                support and assistance in achieving our goals, but it's
+                important to retain control over them. So, make sure that your
+                plans drive everyone forward, but that you're still responsible
+                for achieving your own goal. A relevant goal can answer "yes" to
+                these questions:
+              </p>
+              <ul>
+                <li>Does this seem worthwhile?</li>
+                <li>
+                  Is this the right time?
+                </li>
+                <li>Does this match our other efforts/needs?</li>
+                <li>Am I the right person to reach this goal?</li>
+                <li>
+                  Is it applicable in the current socio-economic environment?
+                </li>
+              </ul>
+              <p><b>Example</b></p>
+              <p>
+                You might want to have a good grade in this class, but are there
+                other potentially more relevant classes you should spend time
+                on? Will you gain the skills and knowledge in this class that
+                will help you later in your career?
+              </p>
+              <mat-form-field>
+                <textarea
+                  matInput
+                  placeholder="I want to have a good grade in this class because it is interesting and important for me."
+                  [(ngModel)]="relevant"
+                ></textarea>
+              </mat-form-field>
+              <button mat-raised-button color="primary" matStepperNext>
+                Next
+              </button>
+              <button
+                mat-raised-button
+                class="margin-right"
+                color="primary"
+                matStepperPrevious
+              >
+                Back
+              </button>
+            </div>
+          </mat-step>
 
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-  </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Time bound</ng-template>
+            <div>
+              <p>
+                Current goal: <i>{{ goal }}</i>
+              </p>
+              <p>
+                Every goal needs a target date, so that you have a deadline to
+                focus on and something to work toward. This part of the SMART
+                goal criteria helps to prevent everyday tasks from taking
+                priority over your longer-term goals. A time-bound goal will
+                usually answer these questions:
+              </p>
+              <ul>
+                <li>When?</li>
+                <li>
+                  What can I do six months from now?
+                </li>
+                <li>What can I do six weeks from now?</li>
+                <li>What can I do today?</li>
+              </ul>
+              <p><b>Example</b></p>
+              <p>
+                Gaining a good grade in a class requires a certain amount of
+                time and planning. You should ask yourself how many days prior
+                to the exam do you need to study? How may hours per day should
+                you allocate? Will you give up this goal if the time frame
+                needed is unrealistic?
+              </p>
+              <mat-form-field>
+                <textarea
+                  matInput
+                  placeholder="I will start studying 2 weeks before the exam and allocate 5 hours per day."
+                  [(ngModel)]="timebound"
+                ></textarea>
+              </mat-form-field>
+              <button
+                mat-raised-button
+                color="primary"
+                (click)="showPage('end')"
+              >
+                Show me my goal!
+              </button>
+              <button
+                mat-raised-button
+                class="margin-right"
+                color="primary"
+                matStepperPrevious
+              >
+                Back
+              </button>
+            </div>
+          </mat-step>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
 
-  <mat-step>
-    <ng-template matStepLabel>Relevant</ng-template>
-
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-  </mat-step>
-
-  <mat-step>
-    <ng-template matStepLabel>Time bound</ng-template>
-
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-  </mat-step>
-
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step>
-</mat-vertical-stepper>
+  <div class="goals-end" *ngIf="page == 'end'">
+    <h2>Your SMART goal</h2>
+    <p>
+      SMART is an effective tool that provides the clarity, focus and motivation
+      you need to achieve your goals. It can also improve your ability to reach
+      them by encouraging you to define your objectives and set a completion
+      date.
+    </p>
+    <p>
+      In this excercise you set out with a simple goal: <i>{{ goal }}</i>
+      <br />
+      And you have learned how to make it more:
+    </p>
+    <ul>
+      <li>
+        Specific: <br /><i>{{ specific }}</i>
+      </li>
+      <li>
+        Measurable: <br /><i>{{ measurable }}</i>
+      </li>
+      <li>
+        Achievable: <br /><i>{{ achievable }}</i>
+      </li>
+      <li>
+        Relevant: <br /><i>{{ relevant }}</i>
+      </li>
+      <li>
+        Time-bound: <br /><i>{{ timebound }}</i>
+      </li>
+    </ul>
+    <p>
+      You should take note of this goal and study how it affects you. Do you
+      feel more motivated now? Do you feel that you have a more specific plan of
+      action? Do you think you are more likely to achieve your goal?
+      <br />
+      If this process helped you, practice using it on other areas of your life.
+      Remember, not every goal has the same potential and we should train
+      ourselves to set them smartly.
+    </p>
+    <button mat-raised-button color="primary" (click)="reset('smart')">
+      Try again!
+    </button>
+  </div>
+</div>

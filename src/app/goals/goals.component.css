@@ -1,0 +1,42 @@
+.goals-main {
+  width: 80%;
+  margin: 30px auto 0;
+}
+
+.goals-main p,
+.goals-main i,
+.goals-main li {
+  color: #2c2d30;
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+  opacity: 0.9;
+}
+
+.goals-main h2 {
+  text-align: center;
+}
+
+.goals-main div {
+  overflow: hidden;
+}
+
+.goals-main button {
+  float: right;
+}
+
+button.margin-right {
+  margin-right: 10px;
+}
+
+mat-form-field {
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #1561ad;
+  font-weight: 500;
+  opacity: 0.9;
+}
